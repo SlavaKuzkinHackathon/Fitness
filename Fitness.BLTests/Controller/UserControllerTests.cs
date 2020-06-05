@@ -19,8 +19,8 @@ namespace Fitness.BL.Controller.Tests
             var weight = 90;
             var height = 190;
             var gender = "man";
-            // act действие
             var controller = new UserController(userName);
+
             //Act
             controller.SetNewUserData(gender, birthdate,
                 weight, height);
