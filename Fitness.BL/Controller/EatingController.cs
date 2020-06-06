@@ -9,9 +9,10 @@ namespace Fitness.BL.Controller
 {
     public class EatingController : ControllerBase
     {
+        private readonly User user;
         private const string FOOD_FILE_NAME= "foods.dat";
         private const string EATINGS_FILE_NAME = "eatings.dat";
-        private readonly User user;
+        
 
         public List<Food> Foods { get; }
         public Eating Eating { get; }
