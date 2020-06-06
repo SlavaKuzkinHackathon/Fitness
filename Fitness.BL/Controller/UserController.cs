@@ -20,7 +20,7 @@ namespace Fitness.BL.Controller
 
         public User CurrentUser { get; }
 
-        public bool ISNewUser { get; } = false;
+        public bool IsNewUser { get; } = false;
 
         /// <summary>
         /// Создание нового контроллера пользователя.
@@ -39,7 +39,7 @@ namespace Fitness.BL.Controller
             {
                 CurrentUser = new User(userName);
                 Users.Add(CurrentUser);
-                ISNewUser = true;
+                IsNewUser = true;
                 Save();
             }
         }
