@@ -8,24 +8,24 @@ namespace Fitness.BL.Controller
     public class ExerciseController : ControllerBase
     {
         private readonly User user;
-        private const string EXERCISES_FILE_NAME = "exercises.dat";
-        private const string ACTIVITES_FILE_NAME = "activities.dat";
         public List<Exercise> Exercises { get; }
         public List<Activity> Activities { get; }
 
-        public ExerciseController(User user) {
+        public ExerciseController(User user)
+        {
             this.user = user ?? throw new ArgumentNullException(nameof(user));
 
             Exercises = GetAllExercises();
-            Activities = GetAllActivites();
+            Activities = GetAllActivities();
         }
 
-        private List<Activity> GetAllActivites()
+        private List<Activity> GetAllActivities()
         {
-            return Load<List<Activity>>(ACTIVITES_FILE_NAME) ?? new List<Activity>();
+            return Load<Activity>() ?? new List<Activity>();
         }
 
-        public void Add(Activity activity, DateTime begin, DateTime end) {
+        public void Add(Activity activity, DateTime begin, DateTime end)
+        {
             var act = Activities.SingleOrDefault(a => a.Name == activity.Name);
 
             if (act == null)
@@ -35,7 +35,8 @@ namespace Fitness.BL.Controller
                 var exercise = new Exercise(begin, end, activity, user);
                 Exercises.Add(exercise);
             }
-            else {
+            else
+            {
                 var exercise = new Exercise(begin, end, act, user);
                 Exercises.Add(exercise);
             }
@@ -44,12 +45,13 @@ namespace Fitness.BL.Controller
 
         private List<Exercise> GetAllExercises()
         {
-            return Load<List<Exercise>>(EXERCISES_FILE_NAME) ?? new List<Exercise>();
+            return Load<Exercise>() ?? new List<Exercise>();
         }
 
-        private void Save() {
-            Save(EXERCISES_FILE_NAME, Exercises);
-            Save(ACTIVITES_FILE_NAME, Activities);
+        private void Save()
+        {
+            Save(Exercises);
+            Save(Activities);
         }
     }
 }

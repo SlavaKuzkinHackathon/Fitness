@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Fitness.BL.Model
 {
@@ -35,6 +36,11 @@ namespace Fitness.BL.Model
         //DateTime nowDate = DateTime.Today;
         //int age = nowDate.Year - birthDate.Year;
         //if(birthDate > now.AddYears(-age) age--);
+
+            public virtual ICollection<Eating> Eatings { get; set; }
+
+
+             public virtual ICollection<Exercise> Exercises { get; set; }
 
         public int Age { get { return DateTime.Now.Year - BirthDate.Year; } }
         #endregion
@@ -75,6 +81,8 @@ namespace Fitness.BL.Model
             Height = height;
            
         }
+
+        public User() { }
 
         public User(string name){
             if (string.IsNullOrWhiteSpace(name))

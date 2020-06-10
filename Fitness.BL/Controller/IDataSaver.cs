@@ -1,12 +1,10 @@
-﻿using System;
+﻿using System.Collections.Generic;
 
 namespace Fitness.BL.Controller
 {
     public interface IDataSaver
     {
-
-        void Save(string fileName, object item);
-
-        T Load<T>(string fileName);
+        void Save<T>(List<T> item) where T : class;
+        List<T> Load<T>() where T : class;
     }
 }

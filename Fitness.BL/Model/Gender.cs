@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Fitness.BL.Model
 {
@@ -11,6 +12,9 @@ namespace Fitness.BL.Model
         /// Название
         /// </summary>
         public string Name { get; set; }
+        public virtual ICollection<User> Users { get; set; }
+        public Gender() { }
+
         /// <summary>
         /// Создать новый пол
         /// </summary>
